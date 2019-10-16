@@ -1,0 +1,22 @@
+{
+  "name": "marcusvdev.github.io",
+  "version": "1.0.0",
+  "description": "Criando meu portfólio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusvdev/marcusvdev.github.io.git"
+  },
+  "author": "Marcus Vinicius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcusvdev/marcusvdev.github.io/issues"
+  },
+  "homepage": "https://github.com/marcusvdev/marcusvdev.github.io#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
