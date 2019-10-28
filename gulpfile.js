@@ -42,8 +42,8 @@ function imagesmin(){
 exports.imagesmin = imagesmin;
 
 function watchfiles(){
+	gulp.watch('./src/img/**', imagesmin);
 	gulp.watch('./src/sass/**', compile);
-	gulp.watch('./src/img/*', imagesmin);
 }
 const watch = gulp.parallel(watchfiles)
 exports.watch = watch;
