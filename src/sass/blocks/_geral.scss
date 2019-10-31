@@ -35,35 +35,13 @@ a{
     }
 }
 
-p {
-    font-family: 'Roboto Slab Light', Arial;
-}
-
-h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat Bold', Arial;
-}
-
 ul{
 	list-style: none;
 }
 
-label {
-    font-size: 0px;
-    color: transparent;
-}
-
-[type=text],
-[type=email],
-[type=tel],
-[type=submit],
-textarea,
-select {
-    font-family: 'Montserrat Light', Arial;
-    font-size: 16px;
-    max-width: 100%;
-    border: none;
-}
-
-strong{
-    font-family: 'Montserrat Bold', Arial;
+.container{
+    width: 100%;
+    padding: 0 20px;
+    max-width: 1170px;
+    margin: 0 auto;
 }
