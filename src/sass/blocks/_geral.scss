@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Sen&display=swap');
 
 * {
     outline: 0;
@@ -21,13 +20,13 @@
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Sen', sans-serif;
     font-size: 16px;
-    color: #777777;
+    background-color: #1d1d1d;
 }
 
 a{
-    color: #4216ff;
+    color: $secondary;
 	text-decoration: none;
     transition: all .3s;
 
@@ -41,9 +40,28 @@ ul{
 	list-style: none;
 }
 
+img{
+    max-width: 100%;
+    height: auto;
+}
+
 .container{
     width: 100%;
     padding: 0 20px;
     max-width: 1170px;
     margin: 0 auto;
+}
+
+.social{
+    display: flex;
+    align-items: center;
+
+    li{
+        margin: 0 5px;
+
+        img{
+            max-width: 16px;
+            height: 16px;
+        }
+    }
 }
