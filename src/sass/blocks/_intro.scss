@@ -1,7 +1,8 @@
 .intro{
 	width: 90%;
 	max-width: 1170px;
-	height: 100vh;
+	min-height: 100vh;
+	padding: 20vh 0;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -25,10 +26,17 @@
 		font-size: 20px;
 		color: $secondary;
 		font-family: 'Sen', sans-serif;
+		@media(max-width:768px){
+			font-size: 16px;
+			line-height: 20px;
+			margin-bottom: 20px;
+		}
 	}
 
 	&__tags{
-		padding: 50px 0 0;
+		@media(min-width:768px){
+			padding: 50px 0 0;
+		}
 	}
 	&__tag{
 		font-family: 'Sen', sans-serif;
@@ -42,23 +50,25 @@
 		white-space: no-wrap;
 		line-height: 1.6rem;
 
-		&:nth-of-type(2n + 1){
-			font-weight: 600;
-			font-size: 1.2rem;
-		}
-		&:nth-of-type(4n + 1){
-			font-weight: 600;
-			font-size: 1.4rem;
-		}
-		&:nth-of-type(5n + 1){
-			font-weight: 400;
-		}
-		&:nth-of-type(6n + 1){
-			font-weight: 900;
-			font-size: 1.6rem;
-		}
-		&:nth-of-type(7n + 1){
-			font-weight: 400;
+		@media(min-width:768px){
+			&:nth-of-type(2n + 1){
+				font-weight: 600;
+				font-size: 1.2rem;
+			}
+			&:nth-of-type(4n + 1){
+				font-weight: 600;
+				font-size: 1.4rem;
+			}
+			&:nth-of-type(5n + 1){
+				font-weight: 400;
+			}
+			&:nth-of-type(6n + 1){
+				font-weight: 900;
+				font-size: 1.6rem;
+			}
+			&:nth-of-type(7n + 1){
+				font-weight: 400;
+			}
 		}
 	}
 }
