@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+        body{
+            height: 200vh;
+            background-image: url('bg.png');
+            background-size: cover;
+            background-position: top center;
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+        .m-modal {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            display: none;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .m-modal.m-show{
+            display: block;
+        }
+
+        .m-modal .m-modal-overlay {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .m-modal .m-modal-content {
+            width: 90%;
+            max-width: 768px;
+            height: 90%;
+            max-height: 540px;
+            background-color: #FFFFFF;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 11px 26px 40px rgba(0,0,0,.2);
+            border-radius: 30px;
+            text-align: center;
+        }
+        .m-modal .m-modal-content a{
+            text-decoration: none;
+            color: #af956e;
+        }
+        .m-modal .m-modal-content p{
+            margin: 0;
+            font-size: 16px;
+            line-height: 22px;
+            color: #4d4d4d;
+        }
+        .m-modal .m-modal-content .m-modal-logo{
+            margin-bottom: 20px;
+        }
+        .m-modal .m-modal-content .m-modal-birth{
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .m-modal .m-modal-content .m-modal-birth p{
+            text-transform: uppercase;
+            margin-right: 10px;
+        }
+        .m-modal .m-modal-content .m-modal-birth input{
+            width: 100px;
+            height: 40px;
+            border: 2px solid #af956e;
+            border-radius: 10px;
+            padding-left: 10px;
+            font-size: 20px;
+            color: #4d4d4d;
+        }
+        .m-modal .m-modal-content .m-modal-birth input:focus{
+            outline: none;
+        }
+        .m-modal .m-modal-content #btn{
+            font-size: 20px;
+            line-height: 38px;
+            border: 2px solid #af956e;
+            border-radius: 10px;
+            color: #4d4d4d;
+            padding: 0 25px;
+            margin: 20px 0;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 300ms ease-in;
+        }
+        .m-modal .m-modal-content #btn:hover{
+            background-color: #af956e;
+            color: #FFFFFF;
+        }
+        .m-modal .m-modal-content [disabled]{
+            opacity: .3;
+            pointer-events: none;
+        }
+        .m-modal .m-modal-content .m-modal-remember{
+            margin-bottom: 20px;
+        }
+    </style>
+    <div class="m-modal">
+        <div class="m-modal-overlay"></div>
+        <div class="m-modal-content">
+            <img src="https://storage.googleapis.com/wzukusers/user-33214205/images/5af0b974f33a5bB29Xe7/logo-panache-full-coloured-rvb_d200.png" alt="MONIN" class="m-modal-logo">
+            <p>Este site compartilha conteúdos que contém bebidas alcoólicas.</p>
+            <p>Não recomendados para menores de 18 anos.</p>
+            <div class="m-modal-birth">
+                <p>INFORME SUA IDADE</p>
+                <input type="number" id="age" onkeyup="validAge()">
+            </div>
+            <p style="font-weight: 300;">Ao clicar em “ENTRAR”, você cumpre e aceita<br>as condições acima descritas.</p>
+            <input id="btn" type="button" onclick="checkAge()" value="Entrar" disabled>
+            <div class="m-modal-remember">
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Lembrar minha resposta</label>
+            </div>
+            <p>Ao continuar você estará aceitando os<br><a href="">"Termos e Condições"</a>, <a href="">"Política de Privacidade"</a> e <a href="">"Políticas de Cookies"</a></p>
+        </div>
+    </div>
+    <script>
+        const show = getCookie("ageUser");
+        if(!show){
+            document.querySelector(".m-modal").classList.add("m-show");
+            document.body.style.overflowY = "hidden";
+        }
+        function checkAge() {
+            let age = document.getElementById("age");
+            let ofAge = false;
+            let remember = document.getElementById("remember");
+            if (Number(age.value) >= 18) {
+                ofAge = true;
+                document.body.style.overflowY = "initial";
+                document.querySelector(".m-modal.m-show").classList.remove("m-show")
+                if(remember.checked){
+                    document.cookie = "ageUser="+age.value;
+                }
+            } else {
+                ofAge = false;
+            }
+        }
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function validAge() {
+            let age = document.getElementById("age");
+            let btn = document.getElementById("btn");
+            if (Number(age.value) >= 18) {
+                btn.removeAttribute("disabled");
+            } else{
+                btn.setAttribute("disabled", "disabled");
+            }
+        }
+    </script>
+</body>
+
+</html>
