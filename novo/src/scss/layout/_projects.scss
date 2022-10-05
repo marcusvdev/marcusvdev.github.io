@@ -3,6 +3,10 @@
 
     .project{
         text-align: center;
+        
+        @include mq("lg", max){
+            margin-bottom: 50px;
+        }    
 
         &__thumb{
             width: 100%;

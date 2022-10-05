@@ -3,4 +3,12 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+
+    @include mq("lg", max){
+        background-size: 100% 200%;
+    }
+
+    &__image{
+        text-align: center;
+    }
 }

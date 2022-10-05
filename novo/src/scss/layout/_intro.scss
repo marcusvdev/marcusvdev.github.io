@@ -3,6 +3,10 @@
         font-size: 1.4rem;
         line-height: 1.8rem;
 
+        @include mq("lg", max){
+            text-align: center;
+        }
+
         strong{
             color: $secondary;
             font-family: $bold;
