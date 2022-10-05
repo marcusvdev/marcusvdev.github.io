@@ -1,0 +1,20 @@
+.m-title{
+    font-family: $bold;
+    font-size: 1.8rem;
+    line-height: 2rem;
+
+    &:after{
+        content: ";";
+        color: $primary;
+        animation: flashing 1s ease-in infinite;
+    }
+}
+
+@keyframes flashing {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

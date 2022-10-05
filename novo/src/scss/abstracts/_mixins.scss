@@ -1,0 +1,37 @@
+$breakpoints: (
+  "xs": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  @if $orientation == "vertical" {
+    background: -webkit-linear-gradient(top, $start-color 0%, $end-color, 30%);
+    background: linear-gradient(to bottom, $start-color 0%, $end-color, 30%);
+  } @else if $orientation == "horizontal" {
+    background: -webkit-linear-gradient(left, $start-color 0%, $end-color, 30%);
+    background: linear-gradient(to right, $start-color 0%, $end-color, 30%);
+  } @else {
+    background: -webkit-radial-gradient(
+      center,
+      ellipse cover,
+      $start-color,
+      $end-color
+    );
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}

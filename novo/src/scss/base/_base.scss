@@ -1,0 +1,55 @@
+html {
+	scroll-behavior: smooth;
+}
+html,
+body {
+	width: 100%;
+	color: $lightgray;
+	font-family: $regular;
+	font-size: 1rem;
+	line-height: 1.2rem;
+	background-color: $tertiary;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1.2rem;
+}
+
+p {
+	font-size: 1rem;
+	line-height: 1.6rem;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+section{
+	padding: 100px 0;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
+}

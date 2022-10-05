@@ -1,0 +1,62 @@
+[class^="m-btn"]{
+    height: 65px;
+    text-align: center;
+    line-height: 65px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    
+    span{
+        height: 65px;
+        padding: 0 30px;
+        border-radius: 5px;
+        display: inline-block;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+    }
+    &:after{
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        border-radius: 5px;
+        z-index: -1;
+    }
+}
+
+.m-btn-primary{
+    span{
+        background-color: $primary;
+        color: $secondary;
+    }
+    &:after{
+        background: darken($color: $primary, $amount: 20);
+    }
+}
+
+.m-btn-secondary{
+    span{
+        background-color: $secondary;
+        color: $primary;
+    }
+    &:after{
+        background: darken($color: $secondary, $amount: 20);
+    }
+}
+
+.m-btn-disabled{
+    pointer-events: none;
+    
+    span{
+        background-color: gray;
+        color: $black;
+    }
+    &:after{
+        background: darken($color: $gray, $amount: 50);
+    }
+}

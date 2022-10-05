@@ -1,0 +1,33 @@
+{
+  "name": "marcusvdev.github.io",
+  "version": "1.0.1",
+  "description": "Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusvdev/marcusvdev.github.io.git"
+  },
+  "author": "Marcus Vinicius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcusvdev/marcusvdev.github.io/issues"
+  },
+  "homepage": "https://github.com/marcusvdev/marcusvdev.github.io#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-watch": "^5.0.1",
+    "node-sass": "^7.0.1",
+    "gulp-htmlmin": "^5.0.1"
+  },
+  "type": "module"
+}

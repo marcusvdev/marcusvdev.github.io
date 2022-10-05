@@ -1,0 +1,24 @@
+.projects{
+    background: rgba($color: $secondary, $alpha: .05);
+
+    .project{
+        text-align: center;
+
+        &__thumb{
+            width: 100%;
+            height: 220px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        h3{
+            color: $secondary;
+        }
+    }
+}
