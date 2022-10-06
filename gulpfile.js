@@ -1,49 +1,61 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass');
-const sassGlob = require('gulp-sass-glob');
-const autoprefixer = require('gulp-autoprefixer');
-const gcmq = require('gulp-group-css-media-queries');
-const cleanCSS = require('gulp-clean-css');
-const imagemin = require('gulp-imagemin');
+import gulp from 'gulp';
+import sassGlob from 'gulp-sass-glob';
+import gcmq from 'gulp-group-css-media-queries';
+import autoPrefixer from 'gulp-autoprefixer';
+import GulpCleanCss from 'gulp-clean-css';
+import imagemin from 'gulp-imagemin';
+import babel from 'gulp-babel';
+import gulpSass from "gulp-sass";
+import nodeSass from "node-sass";
+import htmlmin from 'gulp-htmlmin';
+const sass = gulpSass(nodeSass);
 
-function compile(){
-	return(
-	gulp.src('./src/sass/*.scss')
-		.pipe(sass({outputStyle:'compressed'}))
-		.pipe(sassGlob())
-		.pipe(gcmq())
-		.pipe(autoprefixer({
-			overrideBrowserslist: ['last 3 versions'],
-			cascade: false
-		}))
-		.pipe(cleanCSS())
-		.pipe(gulp.dest('./dist/assets/css/'))
-	) 
-}
-exports.compile = compile;
+gulp.task('compilesass', done => {
+    gulp.src('./src/scss/*.scss')
+        .pipe(sass({outputStyle:'compressed'}))
+        .pipe(sassGlob())
+        .pipe(gcmq())
+        .pipe(autoPrefixer({
+            overrideBrowserslist: ['last 3 versions'],
+            cascade: false
+        }))
+        .pipe(GulpCleanCss())
+        .pipe(gulp.dest('./dist/assets/css/'))
+	done();
+});
 
-function imagesmin(){
-	return(
-	gulp.src('src/img/*')
-        .pipe(imagemin([
-		    imagemin.gifsicle({interlaced: true}),
-		    imagemin.jpegtran({progressive: true}),
-		    imagemin.optipng({optimizationLevel: 5}),
-		    imagemin.svgo({
-		        plugins: [
-		            {removeViewBox: true},
-		            {cleanupIDs: false}
-		        ]
-		    })
-		]))
-        .pipe(gulp.dest('dist/assets/img'))
-	)
-}
-exports.imagesmin = imagesmin;
+gulp.task('compilejs', done => {
+	gulp.src('./src/js/*js')
+		.pipe(babel())
+		.pipe(gulp.dest('./dist/assets/js/'))
+	done();
+});
 
-function watchfiles(){
-	gulp.watch('./src/img/**', imagesmin);
-	gulp.watch('./src/sass/**', compile);
+gulp.task('imagesmin', done => {
+    gulp.src('./src/images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./dist/assets/images/'))
+    done();
+});
+
+gulp.task('htmlmin', () => {
+    return gulp.src('./src/*.html')
+      .pipe(htmlmin({ collapseWhitespace: true }))
+      .pipe(gulp.dest('./'));
+  });
+
+gulp.task('default', gulp.parallel('compilesass', 'compilejs', 'imagesmin', 'htmlmin'), () => {
+	gulp.watch('./src/scss/**', gulp.series('compilesass'))
+	gulp.watch('./src/js/**', gulp.series('compilejs'))
+	gulp.watch('./src/images/**', gulp.series('imagesmin'))
+	gulp.watch('./src/*.html', gulp.series('htmlmin'))
+});
+
+export function watchfiles(){
+    gulp.watch('./src/scss/**', gulp.series('compilesass'));
+	gulp.watch('./src/js/**', gulp.series('compilejs'));
+    gulp.watch('./src/images/**', gulp.series('imagesmin'))
+    gulp.watch('./src/*.html', gulp.series('htmlmin'))
 }
-const watch = gulp.parallel(watchfiles)
-exports.watch = watch;
+
+export default watchfiles();
