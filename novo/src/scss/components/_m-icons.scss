@@ -8,19 +8,26 @@
         width: 75px;
         height: 75px;
         background: $primary;
-        margin-right: 5px;
-        margin-bottom: 5px;
+        margin-right: 10px;
+        margin-bottom: 10px;
         border-radius: 5px;
 
         display: flex;
         justify-content: center;
         align-items: center;
 
+        transition: all 200ms ease-in-out;
+
         img{
             max-width: 70%;
             max-height: 70%;
             object-fit: cover;
             object-position: center;
+            pointer-events: none;
+        }
+
+        &:hover{
+            transform: translateY(-3px);
         }
     }
 }
