@@ -3,6 +3,7 @@
 
     .project{
         text-align: center;
+        margin-bottom: 3rem;
         
         @include mq("lg", max){
             margin-bottom: 50px;
